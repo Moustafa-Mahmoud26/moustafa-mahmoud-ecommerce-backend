@@ -1,0 +1,184 @@
+{
+  "info": {
+    "name": "E-Commerce API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": { "method": "GET", "url": "{{baseUrl}}/categories" }
+        },
+        {
+          "name": "Get Category by ID",
+          "request": { "method": "GET", "url": "{{baseUrl}}/categories/{{categoryId}}" }
+        },
+        {
+          "name": "Create Category",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Accessories\",\n  \"description\": \"Phone and laptop accessories\"\n}"
+            },
+            "url": "{{baseUrl}}/categories"
+          }
+        },
+        {
+          "name": "Update Category",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"description\": \"Updated category description\"\n}"
+            },
+            "url": "{{baseUrl}}/categories/{{categoryId}}"
+          }
+        },
+        {
+          "name": "Delete Category",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/categories/{{categoryId}}" }
+        }
+      ]
+    },
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "request": { "method": "GET", "url": "{{baseUrl}}/products" }
+        },
+        {
+          "name": "Get Product by ID",
+          "request": { "method": "GET", "url": "{{baseUrl}}/products/{{productId}}" }
+        },
+        {
+          "name": "Filter Products by Category",
+          "request": { "method": "GET", "url": "{{baseUrl}}/products?category={{categoryId}}" }
+        },
+        {
+          "name": "Filter Products by Price Range",
+          "request": { "method": "GET", "url": "{{baseUrl}}/products?minPrice=100&maxPrice=50000" }
+        },
+        {
+          "name": "Filter Products In Stock",
+          "request": { "method": "GET", "url": "{{baseUrl}}/products?inStock=true" }
+        },
+        {
+          "name": "Search Products",
+          "request": { "method": "GET", "url": "{{baseUrl}}/products?search=phone" }
+        },
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"iPad\",\n  \"description\": \"Apple tablet\",\n  \"price\": 30000,\n  \"stock\": 15,\n  \"inStock\": true,\n  \"category\": \"{{categoryId}}\",\n  \"images\": []\n}"
+            },
+            "url": "{{baseUrl}}/products"
+          }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"price\": 28000,\n  \"stock\": 10\n}"
+            },
+            "url": "{{baseUrl}}/products/{{productId}}"
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/products/{{productId}}" }
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "View Cart",
+          "request": { "method": "GET", "url": "{{baseUrl}}/cart" }
+        },
+        {
+          "name": "Add Item to Cart",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"productId\": \"{{productId}}\",\n  \"quantity\": 2\n}"
+            },
+            "url": "{{baseUrl}}/cart/items"
+          }
+        },
+        {
+          "name": "Update Cart Item Quantity",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 5\n}"
+            },
+            "url": "{{baseUrl}}/cart/items/{{productId}}"
+          }
+        },
+        {
+          "name": "Remove Item from Cart",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/cart/items/{{productId}}" }
+        },
+        {
+          "name": "Clear Cart",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/cart" }
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Checkout (Create Order)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shippingAddress\": \"123 Main St, Alexandria, Egypt\"\n}"
+            },
+            "url": "{{baseUrl}}/orders"
+          }
+        },
+        {
+          "name": "Get All Orders",
+          "request": { "method": "GET", "url": "{{baseUrl}}/orders" }
+        },
+        {
+          "name": "Get Order by ID",
+          "request": { "method": "GET", "url": "{{baseUrl}}/orders/{{orderId}}" }
+        },
+        {
+          "name": "Update Order Status",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"shipped\"\n}"
+            },
+            "url": "{{baseUrl}}/orders/{{orderId}}/status"
+          }
+        }
+      ]
+    }
+  ]
+}
