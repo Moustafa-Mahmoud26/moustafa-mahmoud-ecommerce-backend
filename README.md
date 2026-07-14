@@ -187,6 +187,10 @@ Errors follow the same shape, with `status: "fail"` (client errors) or `status: 
 
 A Postman collection and environment are included under `/postman`. Import both files into Postman, select the **E-Commerce API Dev** environment, and run the requests in each folder (Categories, Products, Cart, Orders).
 
+## GitHub Repository
+
+Here is the link for my repo: https://github.com/Moustafa-Mahmoud26/moustafa-mahmoud-ecommerce-backend
+
 ## License
 
 ISC
